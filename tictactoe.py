@@ -21,15 +21,16 @@ while True:
 	if board[spot] !='x' and board[spot]!= 'o':
 		board[spot] = 'x'  
 		
-		available = True
+		#available = True
 		
-		while available:
+		while True:
 			random.seed()
 			opponent = random.randint(0,8)
 		
 			if board[opponent] != 'o' and board[opponent]!= 'x':
 				board[opponent] = 'o'
-				available = False
+				#available = False
+				break;
 	 
 	else:
 		print("This is already taken!")
