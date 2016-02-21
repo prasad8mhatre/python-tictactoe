@@ -14,6 +14,34 @@ def show():
 
 show()
 
+def checkLine(char,spot1,spot2,spot3):
+	if board[spot1]==char and board[spot2]==char and board[spot3]==char:
+		return True;
+
+def checkAll(char):
+	if checkLine(char,0,1,2):
+		return True;
+
+	if checkLine(char,3,4,5):
+		return True;
+
+	if checkLine(char,6,7,8):
+		return True;
+	
+	if checkLine(char,0,3,6):
+		return True;
+	if checkLine(char,1,4,7):
+		return True;
+	if checkLine(char,2,5,8):
+		return True;
+	
+	
+	if checkLine(char,0,4,8):
+		return True;
+	if checkLine(char,2,4,6):
+		return True;
+	
+
 while True:
 	spot = input("select a spot:")
 	spot = int(spot)
@@ -21,7 +49,10 @@ while True:
 	if board[spot] !='x' and board[spot]!= 'o':
 		board[spot] = 'x'  
 		
-		#available = True
+		if checkAll('x'):
+			print("## X won ##")
+			show()
+			break;
 		
 		while True:
 			random.seed()
@@ -29,7 +60,10 @@ while True:
 		
 			if board[opponent] != 'o' and board[opponent]!= 'x':
 				board[opponent] = 'o'
-				#available = False
+				if checkAll('o'):
+					print("## O won ##")
+					show()
+					break;
 				break;
 	 
 	else:
